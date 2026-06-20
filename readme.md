@@ -1,51 +1,49 @@
 # ReqFlow AI
 
-### AI-Powered Requirement Analysis & Task Planning Platform
+### AI-Powered Requirement Analysis and Task Planning Platform
 
-ReqFlow AI is a smart planning platform that helps agencies, project managers, and development teams convert client requirements into structured development-ready plans.
+ReqFlow AI is a smart planning platform for agencies, project managers, and development teams. It is designed to convert raw client requirements into structured, development-ready plans.
 
-The platform uses AI to analyze requirements and suggest features, modules, tasks, APIs, database structures, and timelines. Final control always remains with the project manager or admin.
+The long-term vision is to use AI to analyze requirements and suggest features, modules, tasks, APIs, database structures, timelines, and execution plans, while keeping final control with the project manager or admin.
 
 **Transform Requirements Into Action.**
 
 ---
 
-## 🚀 Vision
+## Vision
 
-ReqFlow AI is built to reduce project planning time and improve team productivity.
+ReqFlow AI is built to reduce project planning time and improve delivery clarity.
 
-Instead of manually converting client requirements into tasks, the platform helps generate structured suggestions within minutes.
+Instead of manually converting client requirements into tasks, the platform aims to generate structured suggestions in minutes.
 
-**AI-Assisted Planning. Human-Controlled Execution.**
+**AI-assisted planning. Human-controlled execution.**
 
 ---
 
-## 🎯 Problem
+## Problem
 
-In software agencies and development teams, project planning usually takes a lot of time.
+In software agencies and development teams, planning usually takes significant manual effort.
 
 Common problems:
 
-* Client requirements are often unstructured
-* Project managers spend hours breaking requirements into tasks
-* API and database planning takes extra time
-* Sprint planning is done manually
-* Teams may misunderstand project scope
-* Clients do not always get clear project visibility
+- Client requirements are often unstructured
+- Project managers spend hours breaking requirements into tasks
+- API and database planning takes extra time
+- Sprint planning is handled manually
+- Teams may misunderstand scope
+- Clients do not always get clear project visibility
 
 ---
 
-## 💡 Solution
+## Solution
 
-ReqFlow AI solves this by using AI as a planning assistant.
+ReqFlow AI solves this by acting as a planning assistant.
 
-The client or admin can submit project requirements, and the AI will analyze them to generate useful planning suggestions.
-
-The project manager can then review, edit, approve, or reject the AI-generated output before creating the actual project.
+Clients or admins will be able to submit project requirements, and the platform will analyze them to generate planning suggestions. Project managers or admins can then review, edit, approve, or reject the suggested output before creating the final project.
 
 ---
 
-## 🔄 Platform Flow
+## Platform Flow
 
 ```text
 Client Requirement
@@ -58,7 +56,7 @@ Project Manager Review
         ↓
 Project Creation
         ↓
-Task Editing & Assignment
+Task Editing and Assignment
         ↓
 Development Tracking
         ↓
@@ -69,145 +67,132 @@ Ticket Support System
 
 ---
 
-## 🧠 AI Suggested Output
+## AI Suggested Output
 
-ReqFlow AI can suggest:
+ReqFlow AI is planned to suggest:
 
-* Project features
-* Development modules
-* Task breakdown
-* API endpoints
-* Database tables
-* Sprint plan
-* Timeline estimate
-* Technical architecture
-* Testing checklist
+- Project features
+- Development modules
+- Task breakdown
+- API endpoints
+- Database tables
+- Sprint plan
+- Timeline estimate
+- Technical architecture
+- Testing checklist
 
 ---
 
-## 👨‍💼 Human Control
+## Human Control
 
-AI does not directly create the final project.
+AI will not directly create the final project.
 
-The project manager/admin will:
+The project manager or admin will:
 
-* Review AI output
-* Edit suggested tasks
-* Add custom tasks
-* Remove unnecessary tasks
-* Create the final project manually
-* Assign tasks to team members
-* Track progress
+- Review AI output
+- Edit suggested tasks
+- Add custom tasks
+- Remove unnecessary tasks
+- Create the final project manually
+- Assign tasks to team members
+- Track progress
 
 This keeps the platform practical and safe for real agency workflows.
 
 ---
 
-## ✨ Core Features
+## Current Features
 
 ### Admin Dashboard
 
-* Admin-only login
-* Secure dashboard access
-* Admin profile management
-* Change password
-* Admin management
-* Protected routes
+- Admin-only login
+- Admin logout
+- Secure dashboard access
+- Admin profile management
+- Change password
+- Admin management
+- Protected dashboard routes
+- Staff-only and superuser-only access control
 
-### Requirement Analysis
+### Security
 
-* Submit client requirements
-* AI-based requirement understanding
-* Feature extraction
-* Scope identification
+- CSRF protection
+- Secure session settings
+- Password validation
+- Inactive-user login prevention
+- Environment-based configuration
 
-### Task Suggestions
+### Developer Setup
 
-* AI-generated task list
-* Module-wise task grouping
-* Estimated effort
-* Task priority suggestions
-
-### Project Management
-
-* Manual project creation by project manager/admin
-* Task selection and editing
-* Team assignment
-* Project progress tracking
-
-### Ticket Management
-
-* Support portal after project delivery
-* Bug reporting
-* Change requests
-* Client support tracking
+- SQLite local database support
+- PostgreSQL-ready `DATABASE_URL` support
+- Env-based first admin seeding with `python manage.py seed_admin`
 
 ---
 
-## 🏗 Current Status
+## Current Status
 
 ### Phase 1 Completed
 
-* Admin authentication
-* Custom dashboard
-* Admin management
-* Bootstrap templates
-* Protected dashboard routes
-* Environment-based settings
-* PostgreSQL-ready configuration
+- Admin authentication
+- Custom admin dashboard
+- Admin management
+- Bootstrap template UI
+- Protected dashboard routes
+- Environment-based settings
+- Local SQLite setup
+- PostgreSQL-ready configuration
+- Seed command for first admin
 
-### Upcoming
+### Upcoming Modules
 
-* Requirement submission
-* AI analysis engine
-* Task suggestion system
-* Project management module
-* Client portal
-* Ticket support module
-* Reports and analytics
+- Requirement submission
+- AI analysis engine
+- Task suggestion system
+- Project management
+- Team management
+- Client portal
+- Ticket support system
+- Reports and analytics
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Backend
 
-* Django
-* PostgreSQL
-* Django Templates
+- Django
+- PostgreSQL
+- SQLite for local development
+- Django Templates
 
 ### Frontend
 
-* Bootstrap 5
-* HTML
-* CSS
-* JavaScript
+- Bootstrap 5
+- HTML
+- CSS
+- JavaScript
 
-### Future Frontend
+### Planned AI Layer
 
-* Next.js
-* Tailwind CSS
-
-### AI
-
-* Google Gemini API
-* OpenAI API support in future
+- Google Gemini API
+- OpenAI API support
 
 ---
 
-## 🔒 Security Features
+## Security Features
 
-* Admin-only authentication
-* Staff-only dashboard access
-* CSRF protection
-* Secure sessions
-* Password validation
-* Environment variable configuration
-* Protected dashboard views
+- Admin-only authentication
+- Staff-only dashboard access
+- CSRF protection
+- Secure sessions
+- Password validation
+- Environment variable configuration
+- Protected dashboard views
 
 ---
 
-## 📁 Planned Modules
+## Planned Modules
 
 ```text
 ReqFlow AI
@@ -220,24 +205,41 @@ ReqFlow AI
 ├── Team Management
 ├── Client Portal
 ├── Ticket Management
-└── Reports & Analytics
+└── Reports and Analytics
 ```
 
 ---
 
-## ⚙️ Setup Instructions
+## Project Structure
+
+```text
+core/
+dashboard/
+dashboard/management/commands/
+static/
+static/dashboard/
+templates/
+templates/dashboard/
+manage.py
+requirements.txt
+.env.example
+```
+
+---
+
+## Setup Instructions
 
 ### 1. Clone Repository
 
 ```bash
-git clone <your-repo-url>
-cd reqflow-ai
+git clone https://github.com/idcare19/ReqFlow-AI.git
+cd ReqFlow-AI
 ```
 
 ### 2. Create Virtual Environment
 
 ```bash
-python -m venv venv
+python -m venv .venv
 ```
 
 ### 3. Activate Virtual Environment
@@ -245,13 +247,13 @@ python -m venv venv
 Windows:
 
 ```bash
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 Linux/Mac:
 
 ```bash
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 ### 4. Install Requirements
@@ -262,14 +264,25 @@ pip install -r requirements.txt
 
 ### 5. Configure Environment
 
-Create a `.env` file using `.env.example`.
+Create a `.env` file from `.env.example`.
+
+```bash
+copy .env.example .env
+```
+
+Use local SQLite by default:
 
 ```env
-SECRET_KEY=your-secret-key
+SECRET_KEY=change-me
 DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=postgres://username:password@localhost:5432/reqflow_ai
+ALLOWED_HOSTS=127.0.0.1,localhost
+DATABASE_URL=sqlite:///db.sqlite3
+ADMIN_USERNAME=admin
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=change-this-password
 ```
+
+If you want PostgreSQL instead, replace `DATABASE_URL` with your PostgreSQL connection string.
 
 ### 6. Run Migrations
 
@@ -277,11 +290,13 @@ DATABASE_URL=postgres://username:password@localhost:5432/reqflow_ai
 python manage.py migrate
 ```
 
-### 7. Create First Superuser
+### 7. Create First Staff Admin
 
 ```bash
-python manage.py createsuperuser
+python manage.py seed_admin
 ```
+
+The command safely skips if the admin already exists.
 
 ### 8. Run Server
 
@@ -297,45 +312,53 @@ http://127.0.0.1:8000/dashboard/login/
 
 ---
 
-## 📌 Repository Description
+## Repository Description
 
 ```text
-AI-powered requirement analysis platform that converts client requirements into structured tasks, modules, API suggestions, database recommendations, and project planning workflows.
+AI-powered requirement analysis platform that helps convert client requirements into structured plans, tasks, modules, and future project workflows.
 ```
 
 ---
 
-## 🏷 Suggested GitHub Topics
+## Suggested GitHub Topics
 
 ```text
 django
 python
 postgresql
+sqlite
 bootstrap5
 ai
 requirement-analysis
 task-generation
 project-management
 admin-dashboard
-saas
 workflow-automation
 agency-tools
 ```
 
 ---
 
-## 🎯 Target Users
+## Target Users
 
-* Software agencies
-* Freelancers
-* Project managers
-* Product managers
-* Startup teams
-* Development teams
+- Software agencies
+- Freelancers
+- Project managers
+- Product managers
+- Startup teams
+- Development teams
 
 ---
 
-## 📜 License
+## Repository
+
+GitHub: `idcare19/ReqFlow-AI`
+
+URL: `https://github.com/idcare19/ReqFlow-AI`
+
+---
+
+## License
 
 This project is currently under active development.
 
