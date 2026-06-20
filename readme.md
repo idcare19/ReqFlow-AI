@@ -127,6 +127,7 @@ This keeps the platform practical and safe for real agency workflows.
 - SQLite local database support
 - PostgreSQL-ready `DATABASE_URL` support
 - Env-based first admin seeding with `python manage.py seed_admin`
+- Session-based JSON auth APIs for frontend integration
 
 ---
 
@@ -280,9 +281,20 @@ DATABASE_URL=sqlite:///db.sqlite3
 ADMIN_USERNAME=admin
 ADMIN_EMAIL=admin@example.com
 ADMIN_PASSWORD=change-this-password
+CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+CSRF_TRUSTED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,https://reqflow-ai.onrender.com
+SESSION_COOKIE_SAMESITE=Lax
+CSRF_COOKIE_SAMESITE=Lax
 ```
 
 If you want PostgreSQL instead, replace `DATABASE_URL` with your PostgreSQL connection string.
+
+For Render, also set:
+
+```env
+ALLOWED_HOSTS=127.0.0.1,localhost,reqflow-ai.onrender.com
+RENDER_EXTERNAL_HOSTNAME=reqflow-ai.onrender.com
+```
 
 ### 6. Run Migrations
 
@@ -323,6 +335,35 @@ Example local URL:
 ```text
 http://127.0.0.1:8000/health/
 ```
+
+### 11. Frontend Auth APIs
+
+These JSON endpoints use Django session authentication and keep the dashboard HTML login flow unchanged.
+
+```text
+POST /api/auth/login/
+POST /api/auth/logout/
+GET /api/auth/me/
+GET /api/health/
+```
+
+Example login payload:
+
+```json
+{
+  "username": "admin",
+  "password": "password"
+}
+```
+
+Notes:
+
+- Only `is_staff=True` users can log in through the API
+- Inactive users are blocked
+- Use Django CSRF tokens for frontend `POST` requests
+- `GET /api/auth/me/` also sets the CSRF cookie for frontend usage
+- For cross-domain frontend apps, configure `CORS_ALLOWED_ORIGINS` and `CSRF_TRUSTED_ORIGINS`
+- For HTTPS cross-site cookies in production, set `SESSION_COOKIE_SAMESITE=None` and `CSRF_COOKIE_SAMESITE=None`
 
 ---
 
