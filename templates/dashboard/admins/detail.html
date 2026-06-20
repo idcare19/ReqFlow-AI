@@ -1,0 +1,40 @@
+{% extends "dashboard/base.html" %}
+
+{% block page_title %}Admin Details{% endblock %}
+{% block page_intro %}View account state, permissions, and security actions for this admin user.{% endblock %}
+
+{% block dashboard_content %}
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="panel-card">
+            <div class="detail-grid">
+                <div><span>Name</span><strong>{{ admin_user.get_full_name|default:"-" }}</strong></div>
+                <div><span>Username</span><strong>{{ admin_user.username }}</strong></div>
+                <div><span>Email</span><strong>{{ admin_user.email|default:"-" }}</strong></div>
+                <div><span>Role</span><strong>{{ admin_user.is_superuser|yesno:"Superuser,Staff Admin" }}</strong></div>
+                <div><span>Status</span><strong>{{ admin_user.is_active|yesno:"Active,Inactive" }}</strong></div>
+                <div><span>Date Joined</span><strong>{{ admin_user.date_joined|date:"M d, Y H:i" }}</strong></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card">
+            <div class="d-grid gap-2">
+                <a href="{% url 'dashboard:admin_edit' admin_user.id %}" class="btn btn-primary">Edit Admin</a>
+                <a href="{% url 'dashboard:admin_reset_password' admin_user.id %}" class="btn btn-outline-primary">Reset Password</a>
+                {% if admin_user.is_active %}
+                    <form method="post" action="{% url 'dashboard:admin_deactivate' admin_user.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-danger w-100">Deactivate</button>
+                    </form>
+                {% else %}
+                    <form method="post" action="{% url 'dashboard:admin_activate' admin_user.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-success w-100">Activate</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "dashboard/base.html" %}
+
+{% block page_title %}{{ page_title }}{% endblock %}
+{% block page_intro %}Create or update staff administrators with controlled permissions.{% endblock %}
+
+{% block dashboard_content %}
+<div class="panel-card form-panel">
+    <form method="post">
+        {% csrf_token %}
+        {% include "dashboard/partials/form_fields.html" with form=form %}
+        <button type="submit" class="btn btn-primary">{{ submit_label }}</button>
+    </form>
+</div>
+{% endblock %}

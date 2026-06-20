@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="dashboard-shell">
+    <aside class="sidebar">
+        <div>
+            <div class="brand">
+                <span class="brand-badge">RA</span>
+                <div>
+                    <h1>ReqFlow AI by <a href="https://parvatiandsons.in/" target="_blank" rel="noopener noreferrer" class="brand-link">parvati and sons</a></h1>
+                    <p>Intelligent workflow control center</p>
+                </div>
+            </div>
+            <div class="sidebar-highlight">
+                <span class="sidebar-kicker">Platform</span>
+                <strong>Admin Command Desk</strong>
+                <p>Control admin access, monitor users, and keep operations tidy from one focused workspace.</p>
+            </div>
+            <nav class="nav flex-column sidebar-nav">
+                <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'dashboard:index' %}">Dashboard</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'dashboard:profile' %}">Profile</a>
+                <a class="nav-link {% if 'admin_' in request.resolver_match.url_name %}active{% endif %}" href="{% url 'dashboard:admin_list' %}">Admins</a>
+                <a class="nav-link {% if request.resolver_match.url_name == 'change_password' %}active{% endif %}" href="{% url 'dashboard:change_password' %}">Change Password</a>
+            </nav>
+        </div>
+        <div class="sidebar-footer">
+            <div>
+                <strong>{{ request.user.get_full_name|default:request.user.username }}</strong>
+                <small>{{ request.user.email|default:"No email set" }}</small>
+            </div>
+            <form method="post" action="{% url 'dashboard:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-light btn-sm w-100 mt-3">Logout</button>
+            </form>
+        </div>
+    </aside>
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-copy">
+                <h2>{% block page_title %}ReqFlow AI by parvati and sons{% endblock %}</h2>
+                <p>{% block page_intro %}Manage admin access and monitor your workspace.{% endblock %}</p>
+            </div>
+            <div class="topbar-meta">
+                <span class="meta-chip">Secure Access</span>
+                <span class="status-pill">{{ request.user.is_superuser|yesno:"Superuser,Staff Admin" }}</span>
+            </div>
+        </header>
+
+        {% if messages %}
+            <div class="message-stack">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block dashboard_content %}{% endblock %}
+    </main>
+</div>
+{% endblock %}

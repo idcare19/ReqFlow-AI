@@ -1,0 +1,90 @@
+{% extends "dashboard/base.html" %}
+
+{% block page_title %}ReqFlow AI by parvati and sons Overview{% endblock %}
+{% block page_intro %}Track admin access, account status, and secure entry points from one place.{% endblock %}
+
+{% block dashboard_content %}
+<div class="hero-banner mb-4">
+    <div>
+        <span class="sidebar-kicker">Overview</span>
+        <h3>Clean, secure admin operations</h3>
+        <p>Use this dashboard to keep staff access organized, active accounts visible, and admin security workflows under control.</p>
+    </div>
+    <a href="{% url 'dashboard:admin_create' %}" class="btn btn-primary">Create Admin</a>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="metric-card">
+            <span>Total Admins</span>
+            <h3>{{ stats.total_admins }}</h3>
+            <p>All staff accounts with dashboard access.</p>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="metric-card">
+            <span>Active Admins</span>
+            <h3>{{ stats.active_admins }}</h3>
+            <p>Currently enabled accounts ready for login.</p>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="metric-card">
+            <span>Superusers</span>
+            <h3>{{ stats.superusers }}</h3>
+            <p>Highest privilege accounts in the system.</p>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="metric-card">
+            <span>Inactive Admins</span>
+            <h3>{{ stats.inactive_admins }}</h3>
+            <p>Accounts blocked from dashboard access.</p>
+        </div>
+    </div>
+</div>
+
+<div class="panel-card">
+    <div class="panel-header">
+        <div>
+            <h3>Recently Added Admins</h3>
+            <p>Most recent staff users in the system.</p>
+        </div>
+        <a href="{% url 'dashboard:admin_create' %}" class="btn btn-primary">Create Admin</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for admin_user in recent_admins %}
+                    <tr>
+                        <td>{{ admin_user.get_full_name|default:"-" }}</td>
+                        <td>{{ admin_user.username }}</td>
+                        <td>{{ admin_user.email|default:"-" }}</td>
+                        <td>
+                            {% if admin_user.is_active %}
+                                <span class="badge text-bg-success">Active</span>
+                            {% else %}
+                                <span class="badge text-bg-secondary">Inactive</span>
+                            {% endif %}
+                        </td>
+                        <td><a href="{% url 'dashboard:admin_detail' admin_user.id %}" class="btn btn-sm btn-outline-primary">View</a></td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center py-4">No admins found yet.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

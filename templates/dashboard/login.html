@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}ReqFlow AI by parvati and sons Login{% endblock %}
+
+{% block body %}
+<section class="login-page">
+    <div class="login-card">
+        <div class="login-hero">
+            <span class="eyebrow">Admin access only</span>
+            <h1>Operate smarter with ReqFlow AI</h1>
+            <p>Sign in with your staff account to manage workflows, admins, and secure internal operations.</p>
+            <div class="hero-points">
+                <span>Admin-only entry</span>
+                <span>Protected staff routes</span>
+                <span>Custom internal dashboard</span>
+            </div>
+        </div>
+        <div class="login-form-panel">
+            <h2>ReqFlow AI by parvati and sons Login</h2>
+            <p class="login-subtext">Use your verified staff account credentials to continue.</p>
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+            {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'info' }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label" for="{{ form.username.id_for_label }}">Username</label>
+                    <input type="text" name="{{ form.username.html_name }}" id="{{ form.username.id_for_label }}" class="form-control {% if form.username.errors %}is-invalid{% endif %}" value="{{ form.username.value|default:'' }}" required>
+                    {% for error in form.username.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="{{ form.password.id_for_label }}">Password</label>
+                    <input type="password" name="{{ form.password.html_name }}" id="{{ form.password.id_for_label }}" class="form-control {% if form.password.errors %}is-invalid{% endif %}" required>
+                    {% for error in form.password.errors %}
+                        <div class="invalid-feedback">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Sign In</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
