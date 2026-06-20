@@ -310,6 +310,20 @@ python manage.py runserver
 http://127.0.0.1:8000/dashboard/login/
 ```
 
+### 10. Health Check
+
+Use this lightweight route for uptime checks or Render keep-alive pings:
+
+```text
+/health/
+```
+
+Example local URL:
+
+```text
+http://127.0.0.1:8000/health/
+```
+
 ---
 
 ## Repository Description
