@@ -64,6 +64,10 @@ class AdminLoginView(LoginView):
         login(self.request, user)
         return redirect(self.get_success_url())
 
+    def post(self, request, *args, **kwargs):
+        print("LOGIN POST RECEIVED")
+        return super().post(request, *args, **kwargs)
+
     def get_success_url(self):
         return str(reverse_lazy("dashboard:index"))
 
